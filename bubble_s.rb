@@ -1,4 +1,3 @@
-require "pry"
 def my_bubble(arr)
     size = arr.length
     swapped = true
@@ -13,4 +12,23 @@ def my_bubble(arr)
     end
     return arr
 end 
-binding.pry
+
+def my_alpha_sort(arguments)
+    yield(arguments)
+    arguments.length
+    replaced = true
+    while replaced
+        replaced = false
+        (arguments.length - 1).times do |i|
+            if arguments[i] < arguments[i+1]
+                arguments[i],arguments[i+1] = arguments[i+1],arguments[i]
+                replaced = true
+            end
+        end
+    end
+    return arguments
+end
+
+func =  my_alpha_sort(["hello","hi","hey"]) do |i,j|
+    i.length - j.length
+end
